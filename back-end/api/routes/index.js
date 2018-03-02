@@ -1,10 +1,32 @@
 var express = require('express'),
   router = express.Router(),
   productCtrl = require('../controllers/ProductController');
+  componentproductCtrl = require('../controllers/ComponentController');
 
   const authentication = require('../controllers/authentication')(router);
   app = express();
 	memberCtrl = require('../controllers/MemberController');
+
+
+
+
+
+   //-------------------------------Component Routes-----------------------------------
+
+   router.get('/c5/getProducts', componentproductCtrl.getProducts);
+   router.get('/c5/getProduct/:ComponentproductsId', componentproductCtrl.getProduct);
+   router.post('/c5/createProduct', componentproductCtrl.createProduct);
+   router.get(
+     '/c5/getProductsBySeller/:seller',
+     componentproductCtrl.getProductsBySeller
+   );
+ 
+   router.get(
+     '/c5/getProductsByComponent/:component',
+     componentproductCtrl.getProductsByComponent
+   );
+router.patch('/c5/updateProduct/:ComponentproductsId', componentproductCtrl.updateProduct);
+router.delete('/c5/deleteProduct/:ComponentproductsId', componentproductCtrl.deleteProduct);
 
 
 //-------------------------------Product Routes-----------------------------------

@@ -4,6 +4,7 @@ import { regService} from '../../../services/reg.services' ;
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
+import { DashboardComponent } from '../../../dashboard/dashboard.component';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
   @Input() position = 'normal';
   user: any;
   userMenu: any[];
-
+  divid : Number;
+  public edited = true;
 
 
 
@@ -23,10 +25,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userMenu = [{ title: 'Profile' },{ title: 'Settings' },{ title: 'Logout' }];
+    
+      if(window.sessionStorage.email=="null"){
+        this.edited = false;   } 
+          else 
+      {
+        this.edited = true;    
+    this.userMenu = [{ title: 'Profile' },{ title: 'Settings' }];
 
   }
-
+  }
 
   constructor(
     private sidebarService: NbSidebarService,
@@ -43,17 +51,25 @@ export class HeaderComponent implements OnInit {
     this.menuService.navigateHome();
   }
 
-  login(){
-    window.location.href="#/auth/login"
-  }
+  
+  
 
-  signup(){
-    window.location.href="#/auth/register"
+  signout(event){
+    this.menuService.navigateHome;     
+    window.location.href="#/dashboard"
+    setTimeout(function() { alert("You are a guest now"); }, 5);
+   window.sessionStorage.email="null";
+this.edited = false;
+
+    window.location.reload();
+
   }
 
   onMenuClick(event) {
-    if (event.title === 'Logout') {
+    if (event.title == 'Profile') {
       // Think about what to do ;)
+      console.log('aywa');
+     // window.location.href="#/auth/register"
     }
   }
 }

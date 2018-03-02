@@ -37,17 +37,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'fa fa-cart-arrow-down',
     link: '/dashboard/items'
   },
-  {
-    title: 'Auth',
-    icon: 'fa fa-lock	',
-    children: [{
-      title: 'Login',
-      icon: 'fa fa-sign-in',
-      link: '/dashboard/authe/login',
-    },{
-      title: 'Sign up',
-      icon: 'fa fa-user-plus',
-      link: '/dashboard/authe/signup',
-    }]
-  }
+ 
 ];

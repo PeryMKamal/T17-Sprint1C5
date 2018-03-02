@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MENU_ITEMS } from './dashboard-menu';
 
 import { NbMenuItem } from '@nebular/theme/components/menu/menu.service';
+import { MENU_ITEMS2 } from './dashboard-menu2';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,8 +16,13 @@ import { NbMenuItem } from '@nebular/theme/components/menu/menu.service';
 })
 export class DashboardComponent implements OnInit {
   menu: NbMenuItem[];
-
+  
   ngOnInit() {
-    this.menu = MENU_ITEMS;
+   this.menu= MENU_ITEMS2
+    if(window.sessionStorage.email!="null"){
+    this.menu = MENU_ITEMS;}
+    else 
+    {
+   this.menu = MENU_ITEMS2}
   }
 }
