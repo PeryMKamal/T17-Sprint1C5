@@ -1,17 +1,17 @@
 var mongoose = require('mongoose'),
   moment = require('moment'),
   Validations = require('../utils/Validations'),
-  Componentproducts = mongoose.model('Component');
+  Loziproducts = mongoose.model('Lozi');
 
 module.exports.getProduct = function(req, res, next) {
-  if (!Validations.isObjectId(req.params.ComponentproductsId)) {
+  if (!Validations.isObjectId(req.params.loziproductsId)) {
     return res.status(422).json({
       err: null,
       msg: 'productId parameter must be a valid ObjectId.',
       data: null
     });
   }
-  Componentproducts.findById(req.params.ComponentproductsId).exec(function(err, product) {
+  Loziproducts.findById(req.params.loziproductsId).exec(function(err, product) {
     if (err) {
       return next(err);
     }
@@ -31,7 +31,7 @@ module.exports.getProduct = function(req, res, next) {
 };
 
 module.exports.getProducts = function(req, res, next) {
-  Componentproducts.find({}).exec(function(err, products) {
+  Loziproducts.find({}).exec(function(err, products) {
     if (err) {
       return next(err);
     }
@@ -53,7 +53,7 @@ module.exports.getProductsByComponent = function(req, res, next) {
         data: null
       });
     }
-    Componentproducts.find({
+    Loziproducts.find({
       component: req.params.component
     }).exec(function(err, products) {
       if (err) {
@@ -78,7 +78,7 @@ module.exports.getProductsBySeller = function(req, res, next) {
         data: null
       });
     }
-    Componentproducts.find({
+    Loziproducts.find({
       seller: req.params.seller
     }).exec(function(err, products) {
       if (err) {
@@ -105,7 +105,7 @@ module.exports.getProductsBelowPrice = function(req, res, next) {
       data: null
     });
   }
-  Componentproducts.find({
+  Loziproducts.find({
     price: {
       $lt: req.params.price
     }
@@ -145,7 +145,7 @@ module.exports.createProduct = function(req, res, next) {
   delete req.body.createdAt;
   delete req.body.updatedAt;
 
-  Componentproducts.create(req.body, function(err, product) {
+  Loziproducts.create(req.body, function(err, product) {
     if (err) {
       return next(err);
     }
@@ -158,7 +158,7 @@ module.exports.createProduct = function(req, res, next) {
 };
 
 module.exports.updateProduct = function(req, res, next) {
-  if (!Validations.isObjectId(req.params.ComponentproductsId)) {
+  if (!Validations.isObjectId(req.params.loziproductsId)) {
     return res.status(422).json({
       err: null,
       msg: 'productId parameter must be a valid ObjectId.',
@@ -185,8 +185,8 @@ module.exports.updateProduct = function(req, res, next) {
   delete req.body.createdAt;
   req.body.updatedAt = moment().toDate();
 
-  Componentproducts.findByIdAndUpdate(
-    req.params.ComponentproductsId,
+  Loziproducts.findByIdAndUpdate(
+    req.params.loziproductsId,
     {
       $set: req.body
     },
@@ -209,14 +209,14 @@ module.exports.updateProduct = function(req, res, next) {
 };
 
 module.exports.deleteProduct = function(req, res, next) {
-  if (!Validations.isObjectId(req.params.ComponentproductsId)) {
+  if (!Validations.isObjectId(req.params.loziproductsId)) {
     return res.status(422).json({
       err: null,
       msg: 'productId parameter must be a valid ObjectId.',
       data: null
     });
   }
-  Componentproducts.findByIdAndRemove(req.params.ComponentproductsId).exec(function(
+  Loziproducts.findByIdAndRemove(req.params.loziproductsId).exec(function(
     err,
     deletedProduct
   ) {

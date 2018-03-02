@@ -67,7 +67,7 @@ export class MyitemsComponent implements OnInit {
   
   onCreateCall(event){
     event.confirm.resolve(event.newData);
-    this.myitemsService.createProduct(event.newData.name, event.newData.price,event.newData.component,event.newData.seller).subscribe();
+    this.myitemsService.createProduct(event.newData.name, event.newData.price,event.newData.component,window.sessionStorage.email).subscribe();
 }
 
 onEditCall(event){
@@ -98,7 +98,27 @@ ngOnInit() {
   );
 }
 
-
+  onSearch(query: string = '') {
+    this.source.setFilter([
+      {
+        field: 'id',
+        search: query
+      },
+      {
+        field: 'name',
+        search: query
+      },
+      {
+        field: 'username',
+        search: query
+      },
+      {
+        field: 'email',
+        search: query
+      }
+    ], false); 
+    
+  }
 
 
 }

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var componentSchema = mongoose.Schema({
+var loziSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -33,4 +33,4 @@ seller: {
 },
 });
 
-mongoose.model('Component', componentSchema);
+mongoose.model('Lozi', loziSchema);

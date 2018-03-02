@@ -16,9 +16,8 @@ import { MENU_ITEMS2 } from './dashboard-menu2';
 })
 export class DashboardComponent implements OnInit {
   menu: NbMenuItem[];
-  
+
   ngOnInit() {
-   this.menu= MENU_ITEMS2
     if(window.sessionStorage.email!="null"){
     this.menu = MENU_ITEMS;}
     else 

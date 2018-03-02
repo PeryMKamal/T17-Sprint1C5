@@ -27,10 +27,9 @@ export class SignupComponent implements OnInit {
       this.regService.addReg(userob).subscribe(Response=>{
       this.users.add(userob);
       setTimeout(function() { alert("User Saved"); }, 5);
-      window.location.href="#/dashboard/authe/login";
+      window.location.href="../dashboard";
 
   });
-  window.location.href="#/dashboard/authe/signup";
 
     console.log(userob);
 
