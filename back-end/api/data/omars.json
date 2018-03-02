@@ -1,0 +1,17 @@
+[{
+	"_id": {
+		"$oid": "5a9954c10e657634ec223c99"
+	},
+	"name": "omar",
+	"price": 5000,
+	"component": "c5",
+	"seller": "omar elsobky",
+	"createdAt": {
+		"$date": "2018-03-02T13:42:25.841Z"
+	},
+	"__v": 0,
+	"updatedAt": {
+		"$date": "2018-03-02T13:42:45.303Z"
+	}
+}]
+
